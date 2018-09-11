@@ -3,7 +3,7 @@ var width = parseInt(d3.select('#scatter')
     .style("width"));
 
 var height = width * 2/3;
-var margin = 20;
+var margin = 10;
 var labelArea = 110;
 var padding = 45;
 
@@ -64,7 +64,6 @@ yText.attr("transform",`translate(
     )rotate(-90)`
     );
 
-// y-axis (left) ______________________________
 // Build yText details (css class)
 yText .append("text")
     .attr("y", -22)
@@ -183,7 +182,7 @@ function visualize (csvData) {
 
     // Calculate X and Y tick counts
     function tickCount() {
-      if (width <= 500) {
+      if (width <= 530) {
          xAxis.ticks(5);
          yAxis.ticks(5);
       }
@@ -205,7 +204,7 @@ function visualize (csvData) {
 
     svg.append("g")
         .call(yAxis)
-        .attr("class", "xAxis")
+        .attr("class", "yAxis")
         .attr("transform", `translate(
             ${margin + labelArea}, 
             0 )`
@@ -244,7 +243,6 @@ function visualize (csvData) {
             .append("text")
             .attr("font-size", cRadius)
             .attr("class", "stateText")
-
             .attr("dx", function(d) {
                return xScale(d[currentX]);
             })
